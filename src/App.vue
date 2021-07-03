@@ -1,19 +1,47 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+  <div class="app">
+    <div :class='this.bgcolor'>
+      <div class="left_menu">
+        <div class="font">
+          <p>POMODORO</p>
+        </div>
+        <div class="icon">
+          <router-link to="/"><img src="./assets/img/round_schedule_white_24dp.png"></router-link>
+          <router-link to="/Todo"><img src="./assets/img/round_format_list_bulleted_white_24dp.png"></router-link>
+          <router-link to="/Analytics"><img src="./assets/img/round_insert_chart_white_24dp.png"></router-link>
+          <router-link to="/Ringtone"><img src="./assets/img/baseline_library_music_white_24dp.png"></router-link>
+        </div>
+      </div>
     </div>
-    <router-view/>
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 
+<script>
+export default {
+  name: 'app',
+  data () {
+    return {}
+  },
+  computed: {
+    isbreak () {
+      return this.$store.state.isBreak
+    },
+    bgcolor () {
+      let bgclass = 'col-13'
+      if (this.isbreak === false) {
+        bgclass = 'col-13'
+      } else {
+        bgclass = 'col-13-b'
+      }
+      return bgclass
+    }
+  }
+}
+</script>
+
 <style lang="stylus">
-#app
-  font-family Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing antialiased
-  -moz-osx-font-smoothing grayscale
-  text-align center
-  color #2c3e50
-  margin-top 60px
+  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap')
 </style>
