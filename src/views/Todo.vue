@@ -1,5 +1,5 @@
 <template>
-<div id="todo">
+<div class="todo">
   <div class="container">
     <div class="row-1">
       <div class="col-15">
